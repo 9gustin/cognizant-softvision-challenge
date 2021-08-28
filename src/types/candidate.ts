@@ -1,6 +1,14 @@
+export enum Steps {
+  INITIAL_INTERVIEW = "Entrevista inicial",
+  TECNICAL_INTERVIEW = "Entrevista técnica",
+  OFFER = "Oferta",
+  ASSIGN = "Asignación",
+  REJECTED = "Rechazo",
+}
+
 export interface Candidate {
   id: string;
   name: string;
-  step: "Entrevista inicial" | "Entrevista técnica" | "Oferta" | "Asignación" | "Rechazo";
+  step: Steps;
   comments: string;
 }

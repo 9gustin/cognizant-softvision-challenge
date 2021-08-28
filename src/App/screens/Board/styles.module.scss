@@ -1,0 +1,10 @@
+@use '../../../styles/globals';
+
+.board {
+  background-color: globals.$main-color;
+  display: grid;
+  gap: 20px;
+  height: 100vh;
+  padding: 20px;
+  width: 100%;
+}
