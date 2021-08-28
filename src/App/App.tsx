@@ -1,9 +1,9 @@
 import React from "react";
 
-import Board from "./screens/Board";
+import Home from "./screens/Home";
 
 function App() {
-  return <Board />;
+  return <Home />;
 }
 
 export default App;
