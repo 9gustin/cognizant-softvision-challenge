@@ -28,12 +28,12 @@ function Board<DataType>({columns, data, onAddItem, field}: Props<DataType>) {
       {columns.map(({key, name, canAddItem}) => (
         <Column
           key={key}
-          candidates={data.filter(
+          items={data.filter(
             // TODO: Remove any type
             (item: DataType) => field in item && (item as any)[field] === key,
           )}
           title={name}
-          onAddCandidate={canAddItem ? onAddItem : undefined}
+          onAddItem={canAddItem ? onAddItem : undefined}
         />
       ))}
     </main>

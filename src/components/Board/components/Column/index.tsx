@@ -1,26 +1,26 @@
 import React from "react";
 
-import {Candidate} from "../../../../../types/candidate";
 import AddCandidateForm from "../AddCandidateForm";
 
 import styles from "./styles.module.scss";
 
-interface Props {
+interface Props<DataType> {
   title: string;
-  candidates: Candidate[];
-  onAddCandidate?: () => void;
+  items: DataType[];
+  onAddItem?: () => void;
 }
 
-function Column({title, candidates, onAddCandidate}: Props) {
+function Column<DataType>({title, items, onAddItem}: Props<DataType>) {
   return (
     <div className={styles.column}>
       <h3>{title}</h3>
       <ul>
-        {candidates.map(({id, name}) => (
-          <li key={id}>{name}</li>
+        {/* TODO: Replace any type */}
+        {items.map((item: any) => (
+          <li key={item.id}>{item.name}</li>
         ))}
       </ul>
-      {onAddCandidate && <AddCandidateForm onAddCandidate={onAddCandidate} />}
+      {onAddItem && <AddCandidateForm onAddCandidate={onAddItem} />}
     </div>
   );
 }
