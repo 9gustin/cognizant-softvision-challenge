@@ -1,7 +1,7 @@
-@use '../../../styles/globals';
+@use '../../../styles/variables';
 
 .board {
-  background-color: globals.$main-color;
+  background-color: variables.$main-color;
   display: grid;
   gap: 20px;
   height: 100vh;

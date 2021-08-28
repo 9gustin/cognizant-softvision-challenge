@@ -1,5 +1,5 @@
-@use '../../../../../styles/globals';
+@use '../../../../../styles/variables';
 
 .column {
-  background-color: globals.$bg-color;
+  background-color: variables.$bg-color;
 }
