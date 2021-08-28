@@ -10,6 +10,8 @@ import styles from "./styles.module.scss";
 function Board() {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
 
+  const onAddCandidate = () => console.log("ADD CANDIDATE");
+
   const candidatesByStep = (step: Steps) =>
     candidates.filter((candidate) => candidate.step === step);
 
@@ -27,9 +29,9 @@ function Board() {
       {COLUMNS.map(({step, canAddCandidate}) => (
         <Column
           key={step}
-          canAddCandidate={canAddCandidate}
           candidates={candidatesByStep(step)}
           title={step}
+          onAddCandidate={canAddCandidate ? onAddCandidate : undefined}
         />
       ))}
     </main>
