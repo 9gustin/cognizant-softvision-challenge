@@ -25,15 +25,17 @@ function Board({columns, data, onAddItem}: Props) {
         gridTemplateColumns: `repeat(${COLUMNS.length}, 1fr)`,
       }}
     >
-      {columns.map(({key, name, canAddItem}) => (
-        <Column
-          key={key}
-          columnKey={key}
-          items={data.filter((item: Item) => item.key === key)}
-          title={name}
-          onAddItem={canAddItem ? onAddItem : undefined}
-        />
-      ))}
+      {columns
+        .sort((columnA, columnB) => (columnA.order ?? 1) - (columnB.order ?? 1))
+        .map(({key, name, canAddItem}) => (
+          <Column
+            key={key}
+            columnKey={key}
+            items={data.filter((item: Item) => item.key === key)}
+            title={name}
+            onAddItem={canAddItem ? onAddItem : undefined}
+          />
+        ))}
     </main>
   );
 }
