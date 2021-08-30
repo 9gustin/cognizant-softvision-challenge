@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-import {Item, onAddFunction} from "../AddCandidateForm/constants";
+import {Item, onAddFunction, onMoveFunction} from "../AddCandidateForm/constants";
 import Items from "../Items";
 
 import AddingItem from "./components/AddingItem";
@@ -11,9 +11,14 @@ interface Props {
   title: string;
   items: Item[];
   onAddItem?: onAddFunction;
+  onMoveItem: onMoveFunction;
+  steps: {
+    next?: string;
+    prev?: string;
+  };
 }
 
-function Column({title, items, onAddItem, columnKey}: Props) {
+function Column({title, items, onAddItem, columnKey, onMoveItem, steps}: Props) {
   const [adding, setAdding] = useState(false);
 
   const toggleAdding = () => setAdding((prevAdding) => !prevAdding);
@@ -21,7 +26,11 @@ function Column({title, items, onAddItem, columnKey}: Props) {
   return (
     <div className={styles.column}>
       <h3>{title}</h3>
-      {items.length ? <Items items={items} /> : <span>Columna vacia</span>}
+      {items.length ? (
+        <Items items={items} steps={steps} onMoveItem={onMoveItem} />
+      ) : (
+        <span>Columna vacia</span>
+      )}
       <AddingItem
         adding={adding}
         columnKey={columnKey}

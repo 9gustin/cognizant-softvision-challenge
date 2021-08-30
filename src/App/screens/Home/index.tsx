@@ -19,14 +19,21 @@ function Home() {
         comments,
       };
 
-      setCandidates((prevCandidates) => {
-        const newCandidates = prevCandidates
-          ? [...prevCandidates, mappedCandidate]
-          : [mappedCandidate];
+      const newCandidates = candidates ? [...candidates, mappedCandidate] : [mappedCandidate];
 
-        return newCandidates;
-      });
+      setCandidates(newCandidates);
     } else alert("Debes completar todos los campos para agregar un candidato!");
+  };
+
+  const moveCandidate = ({id}: Item, to: string) => {
+    if (!candidates) return;
+
+    const newCandidates = candidates.map((candidate) => ({
+      ...candidate,
+      step: candidate.id === id ? (to as Steps) : candidate.step,
+    }));
+
+    setCandidates(newCandidates);
   };
 
   useEffect(() => {
@@ -47,14 +54,20 @@ function Home() {
   }, [candidates]);
 
   const mappedCandidates =
-    candidates?.map(({step, name, comments}) => ({
-      key: step,
+    candidates?.map(({id, step, name, comments}) => ({
+      id,
       name,
       comments,
+      key: step,
     })) ?? [];
 
   return candidates ? (
-    <Board columns={COLUMNS} data={mappedCandidates} onAddItem={onAddCandidate} />
+    <Board
+      columns={COLUMNS}
+      data={mappedCandidates}
+      onAddItem={onAddCandidate}
+      onMoveItem={moveCandidate}
+    />
   ) : (
     "Cargando..."
   );
