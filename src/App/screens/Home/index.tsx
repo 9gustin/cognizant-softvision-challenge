@@ -46,8 +46,15 @@ function Home() {
     }
   }, [candidates]);
 
+  const mappedCandidates =
+    candidates?.map(({step, name, comments}) => ({
+      key: step,
+      name,
+      comments,
+    })) ?? [];
+
   return candidates ? (
-    <Board columns={COLUMNS} data={candidates} field="step" onAddItem={onAddCandidate} />
+    <Board columns={COLUMNS} data={mappedCandidates} onAddItem={onAddCandidate} />
   ) : (
     "Cargando..."
   );

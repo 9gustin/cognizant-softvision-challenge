@@ -4,11 +4,13 @@ export enum FIELDS {
 }
 
 export interface Item {
+  key: string;
   [FIELDS.NAME]?: string;
   [FIELDS.COMMENTS]?: string;
 }
 
 export const defaultValues = {
+  key: "ITEM",
   [FIELDS.NAME]: "",
   [FIELDS.COMMENTS]: "",
 };

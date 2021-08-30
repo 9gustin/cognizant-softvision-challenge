@@ -1,28 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 
-import AddCandidateForm from "../AddCandidateForm";
-import {onAddFunction} from "../AddCandidateForm/constants";
+import {Item, onAddFunction} from "../AddCandidateForm/constants";
+import Items from "../Items";
 
+import AddingItem from "./components/AddingItem";
 import styles from "./styles.module.scss";
 
-interface Props<DataType> {
+interface Props {
   columnKey: string;
   title: string;
-  items: DataType[];
+  items: Item[];
   onAddItem?: onAddFunction;
 }
 
-function Column<DataType>({title, items, onAddItem, columnKey}: Props<DataType>) {
+function Column({title, items, onAddItem, columnKey}: Props) {
+  const [adding, setAdding] = useState(false);
+
+  const toggleAdding = () => setAdding((prevAdding) => !prevAdding);
+
   return (
     <div className={styles.column}>
       <h3>{title}</h3>
-      <ul>
-        {/* TODO: Replace any type */}
-        {items.map((item: any, index: number) => (
-          <li key={`${item.id}-${index}`}>{item.name}</li>
-        ))}
-      </ul>
-      {onAddItem && <AddCandidateForm columnKey={columnKey} onAdd={onAddItem} />}
+      {items.length ? <Items items={items} /> : <span>Columna vacia</span>}
+      <AddingItem
+        adding={adding}
+        columnKey={columnKey}
+        toggleAdding={toggleAdding}
+        onAddItem={onAddItem}
+      />
     </div>
   );
 }

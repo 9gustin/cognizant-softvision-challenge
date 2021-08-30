@@ -2,23 +2,22 @@ import React from "react";
 
 import {COLUMNS} from "../../App/screens/Home/constants";
 
-import {onAddFunction} from "./components/AddCandidateForm/constants";
+import {Item, onAddFunction} from "./components/AddCandidateForm/constants";
 import Column from "./components/Column";
 import styles from "./styles.module.scss";
 
-interface Props<DataType> {
+interface Props {
   columns: {
     key: string;
     name: string;
     canAddItem?: boolean;
     order?: number;
   }[];
-  data: DataType[];
+  data: Item[];
   onAddItem: onAddFunction;
-  field: string;
 }
 
-function Board<DataType>({columns, data, onAddItem, field}: Props<DataType>) {
+function Board({columns, data, onAddItem}: Props) {
   return (
     <main
       className={styles.board}
@@ -30,10 +29,7 @@ function Board<DataType>({columns, data, onAddItem, field}: Props<DataType>) {
         <Column
           key={key}
           columnKey={key}
-          items={data.filter(
-            // TODO: Remove any type
-            (item: DataType) => field in item && (item as any)[field] === key,
-          )}
+          items={data.filter((item: Item) => item.key === key)}
           title={name}
           onAddItem={canAddItem ? onAddItem : undefined}
         />

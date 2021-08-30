@@ -5,10 +5,11 @@ import {defaultValues, FIELDS, Item, onAddFunction} from "./constants";
 interface Props {
   columnKey: string;
   onAdd: onAddFunction;
+  onCancel: () => void;
   values?: Item;
 }
 
-function AddCandidateForm({onAdd, values = defaultValues, columnKey}: Props) {
+function AddCandidateForm({onAdd, onCancel, values = defaultValues, columnKey}: Props) {
   const [item, setItem] = useState<Item>(values ?? {});
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -32,6 +33,9 @@ function AddCandidateForm({onAdd, values = defaultValues, columnKey}: Props) {
         onChange={handleChange}
       />
       <button type="submit">Agregar</button>
+      <button type="button" onClick={onCancel}>
+        Cancelar
+      </button>
     </form>
   );
 }
