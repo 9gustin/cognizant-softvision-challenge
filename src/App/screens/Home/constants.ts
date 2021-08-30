@@ -28,3 +28,5 @@ export const COLUMNS = [
     order: 5,
   },
 ];
+
+export const CANDIDATES_CACHE_KEY = "candidates";

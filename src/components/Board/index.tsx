@@ -2,6 +2,7 @@ import React from "react";
 
 import {COLUMNS} from "../../App/screens/Home/constants";
 
+import {onAddFunction} from "./components/AddCandidateForm/constants";
 import Column from "./components/Column";
 import styles from "./styles.module.scss";
 
@@ -13,7 +14,7 @@ interface Props<DataType> {
     order?: number;
   }[];
   data: DataType[];
-  onAddItem: () => void;
+  onAddItem: onAddFunction;
   field: string;
 }
 
@@ -28,6 +29,7 @@ function Board<DataType>({columns, data, onAddItem, field}: Props<DataType>) {
       {columns.map(({key, name, canAddItem}) => (
         <Column
           key={key}
+          columnKey={key}
           items={data.filter(
             // TODO: Remove any type
             (item: DataType) => field in item && (item as any)[field] === key,
