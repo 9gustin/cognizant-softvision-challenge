@@ -35,6 +35,7 @@ function Board({columns, data, onAddItem, onMoveItem}: Props) {
         .map(({key, name, canAddItem, steps}) => (
           <Column
             key={key}
+            className={styles.column}
             columnKey={key}
             items={data.filter((item: Item) => item.key === key)}
             steps={steps}

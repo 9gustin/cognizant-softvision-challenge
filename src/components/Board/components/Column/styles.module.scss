@@ -10,5 +10,7 @@
 
   .emptyState{
     color: variables.$light-text-color;
+    display: block;
+    padding: 10px;
   }
 }

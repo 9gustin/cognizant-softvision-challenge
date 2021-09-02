@@ -10,6 +10,7 @@ interface Props {
   columnKey: string;
   title: string;
   items: Item[];
+  className?: string;
   onAddItem?: onAddFunction;
   onMoveItem: onMoveFunction;
   steps: {
@@ -18,13 +19,13 @@ interface Props {
   };
 }
 
-function Column({title, items, onAddItem, columnKey, onMoveItem, steps}: Props) {
+function Column({title, className, items, onAddItem, columnKey, onMoveItem, steps}: Props) {
   const [adding, setAdding] = useState(false);
 
   const toggleAdding = () => setAdding((prevAdding) => !prevAdding);
 
   return (
-    <div className={styles.column}>
+    <div className={`${styles.column} ${className}`}>
       <h3 className={styles.title}>{title}</h3>
       {items.length ? (
         <Items items={items} steps={steps} onMoveItem={onMoveItem} />
