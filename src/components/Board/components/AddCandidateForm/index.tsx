@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 
 import {defaultValues, FIELDS, Item, onAddFunction} from "./constants";
+import styles from "./styles.module.scss";
 
 interface Props {
   columnKey: string;
@@ -23,7 +24,7 @@ function AddCandidateForm({onAdd, onCancel, values = defaultValues, columnKey}: 
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <input required name={FIELDS.NAME} type="text" value={item.name} onChange={handleChange} />
       <input
         required

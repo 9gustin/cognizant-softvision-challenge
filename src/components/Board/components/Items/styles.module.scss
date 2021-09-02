@@ -1,0 +1,26 @@
+@use '../../../../styles/variables';
+
+.list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+
+  .card {
+    background-color: variables.$card-bg-color;
+    display: grid;
+    grid-template-columns: 1fr 60px;
+    margin: 5px auto;
+    padding: 10px;
+    text-align: right;
+    width: 95%;
+
+    .data {
+      text-align: left;
+      .comments {
+        color: variables.$light-text-color;
+        display: block;
+        font-size: variables.$small-font;
+      }
+    }
+  }
+}

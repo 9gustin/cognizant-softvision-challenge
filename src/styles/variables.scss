@@ -1,7 +1,17 @@
 $main-color: #006494;
 $text-color: #222;
-$bg-color: #eee;
+$light-text-color: #777;
+$bg-color: #ddd;
+$card-bg-color: #fff;
+$small-font: 14px;
+$normal-font: 16px;
+$long-font: 20px;
 
 * {
   color: $text-color;
+  font-size: $normal-font;
+}
+
+h1, h2, h3 {
+  font-size: $long-font;
 }

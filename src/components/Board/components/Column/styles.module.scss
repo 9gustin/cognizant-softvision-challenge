@@ -2,4 +2,13 @@
 
 .column {
   background-color: variables.$bg-color;
+
+  .title {
+    padding: 10px;
+    text-align: left;
+  }
+
+  .emptyState{
+    color: variables.$light-text-color;
+  }
 }

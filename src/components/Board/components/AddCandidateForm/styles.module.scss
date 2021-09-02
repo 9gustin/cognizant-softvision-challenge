@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: space-between;
+  padding: 15px;
+
+  & > input {
+    width: 100%;
+  }
+  & > button {
+    width: 45%;
+  }
+}

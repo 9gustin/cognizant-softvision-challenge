@@ -25,11 +25,11 @@ function Column({title, items, onAddItem, columnKey, onMoveItem, steps}: Props) 
 
   return (
     <div className={styles.column}>
-      <h3>{title}</h3>
+      <h3 className={styles.title}>{title}</h3>
       {items.length ? (
         <Items items={items} steps={steps} onMoveItem={onMoveItem} />
       ) : (
-        <span>Columna vacia</span>
+        <span className={styles.emptyState}>Columna vacia</span>
       )}
       <AddingItem
         adding={adding}
