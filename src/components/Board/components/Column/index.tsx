@@ -24,6 +24,11 @@ function Column({title, className, items, onAddItem, columnKey, onMoveItem, step
 
   const toggleAdding = () => setAdding((prevAdding) => !prevAdding);
 
+  const handleAddItem: onAddFunction = (...args) => {
+    setAdding(false);
+    onAddItem?.(...args);
+  };
+
   return (
     <div className={`${styles.column} ${className}`}>
       <h3 className={styles.title}>{title}</h3>
@@ -36,7 +41,7 @@ function Column({title, className, items, onAddItem, columnKey, onMoveItem, step
         adding={adding}
         columnKey={columnKey}
         toggleAdding={toggleAdding}
-        onAddItem={onAddItem}
+        onAddItem={handleAddItem}
       />
     </div>
   );

@@ -3,14 +3,14 @@ import React, {useEffect, useState} from "react";
 import {Candidate, Steps} from "../../../types/candidate";
 import candidatesService from "../../../api";
 import Board from "../../../components/Board";
-import {Item} from "../../../components/Board/components/AddCandidateForm/constants";
+import {Item, onAddFunction} from "../../../components/Board/components/AddCandidateForm/constants";
 
 import {COLUMNS} from "./constants";
 
 function Home() {
   const [candidates, setCandidates] = useState<Candidate[] | null>(null);
 
-  const onAddCandidate = ({item: {name, comments}, columnKey}: {item: Item; columnKey: string}) => {
+  const onAddCandidate: onAddFunction = ({item: {name, comments}, columnKey}) => {
     if (name && comments) {
       const mappedCandidate = {
         id: name,
