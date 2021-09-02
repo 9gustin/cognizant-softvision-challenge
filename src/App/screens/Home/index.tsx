@@ -69,7 +69,7 @@ function Home() {
       onMoveItem={moveCandidate}
     />
   ) : (
-    "Cargando..."
+    <span>Cargando...</span>
   );
 }
 
