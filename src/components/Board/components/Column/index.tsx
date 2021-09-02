@@ -41,7 +41,7 @@ function Column({title, className, items, onAddItem, columnKey, onMoveItem, step
         adding={adding}
         columnKey={columnKey}
         toggleAdding={toggleAdding}
-        onAddItem={handleAddItem}
+        onAddItem={onAddItem ? handleAddItem : undefined}
       />
     </div>
   );
